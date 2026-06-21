@@ -944,13 +944,26 @@ h1,h2,h3,h4{
 }
 
 .contact-services{
-    margin-bottom:24px;
+    margin:20px 0 30px;
 }
 
-.contact-services p{
-    margin:8px 0;
+.contact-services ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.contact-services li{
+    margin:10px 0;
     color:var(--ink-muted);
     font-size:14px;
+    line-height:1.6;
+}
+
+.contact-services li::before{
+    content:"✓ ";
+    color:var(--gold);
+    font-weight:700;
 }
 
 /* =====================================
@@ -1473,12 +1486,14 @@ I help businesses with GoHighLevel setup, workflow automation, CRM management, s
       </div>
 
       <div class="contact-services">
-    <p>✓ GoHighLevel Setup & Automation</p>
-    <p>✓ CRM & Pipeline Management</p>
-    <p>✓ Social Media Management</p>
-    <p>✓ Lead Generation</p>
-    <p>✓ Administrative Support</p>
-    <p>✓ Client Onboarding</p>
+    <ul>
+        <li>GoHighLevel Setup & Automation</li>
+        <li>CRM & Pipeline Management</li>
+        <li>Social Media Management</li>
+        <li>Lead Generation</li>
+        <li>Administrative Support</li>
+        <li>Client Onboarding</li>
+    </ul>
 </div>
        <div class="contact-right">
         <form class="contact-form" id="contactForm">
