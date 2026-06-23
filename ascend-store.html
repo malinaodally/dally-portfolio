@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCEND — Premium Streetwear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garant:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --dark: #141414;
+    --card: #1C1C1C;
+    --gold: #C9A84C;
+    --gold-light: #E2C37A;
+    --gold-dim: rgba(201,168,76,0.15);
+    --white: #FFFFFF;
+    --off-white: #F0EDE8;
+    --muted: #888888;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--black) !important;
+    padding: 0.45rem 1.2rem;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--black) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: blur(20px);
+    z-index: 99;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--black);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 65% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  .hero-slash {
+    position: absolute;
+    top: -10%; right: 8%;
+    width: 3px;
+    height: 130%;
+    background: linear-gradient(180deg, transparent, var(--gold) 30%, var(--gold-light) 60%, transparent);
+    transform: rotate(12deg);
+    opacity: 0.35;
+  }
+
+  .hero-slash-2 {
+    position: absolute;
+    top: -10%; right: 13%;
+    width: 1px;
+    height: 130%;
+    background: linear-gradient(180deg, transparent, var(--gold) 40%, transparent);
+    transform: rotate(12deg);
+    opacity: 0.15;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 2.5rem;
+    max-width: 900px;
+    margin-top: 64px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 12rem);
+    line-height: 0.9;
+    letter-spacing: 0.04em;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .hero-title span { color: var(--gold); }
+
+  .hero-sub {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: rgba(240,237,232,0.6);
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.9rem 2.2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    border-radius: 2px;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    padding: 0.9rem 2.2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    transition: border-color 0.25s, color 0.25s;
+    border-radius: 2px;
+  }
+
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 3rem;
+    right: 2.5rem;
+    display: flex;
+    gap: 2.5rem;
+    z-index: 2;
+  }
+
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 6rem 2.5rem; }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 0.06em;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    color: rgba(240,237,232,0.55);
+    max-width: 480px;
+    margin-bottom: 3.5rem;
+    line-height: 1.7;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── FEATURED COLLECTION ── */
+  #featured {
+    background: var(--dark);
+  }
+
+  .featured-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .featured-card {
+    background: var(--card);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .featured-card:first-child { grid-row: span 2; }
+
+  .featured-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .featured-card:first-child .featured-img { aspect-ratio: auto; height: 100%; }
+  .featured-card:hover .featured-img { transform: scale(1.04); }
+
+  .featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.8rem;
+    transition: background 0.3s;
+  }
+
+  .featured-card:hover .featured-overlay {
+    background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.2) 60%);
+  }
+
+  .featured-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .featured-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+  }
+
+  .featured-price {
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    margin-top: 0.3rem;
+    font-weight: 500;
+  }
+
+  /* ── PRODUCT GRID ── */
+  #products {
+    background: var(--black);
+  }
+
+  .products-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .products-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .products-header-left { flex: 1; min-width: 200px; }
+
+  .filter-bar {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+  }
+
+  .product-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-img { transform: scale(1.06); }
+
+  .product-badge {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+  }
+
+  .product-quick-add {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(201,168,76,0.95);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.8rem;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+  }
+
+  .product-card:hover .product-quick-add { transform: translateY(0); }
+
+  .product-info {
+    padding: 1.2rem;
+  }
+
+  .product-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+  }
+
+  .product-price {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .product-sizes {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .size-chip {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .size-chip:hover, .size-chip.active {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .product-colors {
+    display: flex;
+    gap: 0.45rem;
+    align-items: center;
+  }
+
+  .color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .color-dot:hover, .color-dot.active {
+    border-color: var(--gold);
+    transform: scale(1.2);
+  }
+
+  .color-label {
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-left: 0.3rem;
+  }
+
+  /* ── PRODUCT DETAIL MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--card);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    max-width: 860px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+
+  .modal-img-wrap { background: #111; }
+
+  .modal-img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .modal-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.4rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    line-height: 1;
+    z-index: 10;
+  }
+
+  .modal-close:hover { opacity: 1; }
+
+  .modal-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .modal-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+  }
+
+  .modal-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .modal-desc {
+    font-size: 0.85rem;
+    color: rgba(240,237,232,0.6);
+    line-height: 1.7;
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1rem;
+  }
+
+  .modal-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-sizes { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .modal-size-btn {
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--off-white);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .modal-size-btn:hover, .modal-size-btn.active {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .modal-colors { display: flex; gap: 0.6rem; }
+
+  .modal-color-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .modal-color-dot:hover, .modal-color-dot.active {
+    border-color: var(--gold);
+    transform: scale(1.1);
+  }
+
+  .modal-add-btn {
+    background: var(--gold);
+    color: var(--black);
+    padding: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.25s;
+    margin-top: auto;
+  }
+
+  .modal-add-btn:hover { background: var(--gold-light); }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--dark);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-glow {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .about-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-main {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    background: #1a1a1a;
+  }
+
+  .about-img-accent {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 55%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 3px solid var(--black);
+    border-radius: 2px;
+    background: #222;
+  }
+
+  .about-gold-line {
+    position: absolute;
+    top: 2rem;
+    left: -0.5rem;
+    width: 3px;
+    height: 60%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    border-radius: 2px;
+  }
+
+  .about-text .section-title { margin-bottom: 1.5rem; }
+
+  .about-body {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: rgba(240,237,232,0.7);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .value-item {
+    border-left: 2px solid var(--gold);
+    padding-left: 1rem;
+  }
+
+  .value-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .value-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── SHIPPING ── */
+  #shipping {
+    background: var(--black);
+  }
+
+  .shipping-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .shipping-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .shipping-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: border-color 0.3s;
+  }
+
+  .shipping-card:hover { border-color: rgba(201,168,76,0.3); }
+
+  .shipping-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .shipping-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .shipping-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .shipping-detail {
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .shipping-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: rgba(240,237,232,0.5);
+    padding: 0.3rem 0;
+  }
+
+  .shipping-item strong { color: var(--off-white); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--dark);
+  }
+
+  .contact-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-info { padding-top: 1rem; }
+
+  .contact-detail {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    font-size: 1.2rem;
+    padding-top: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-detail-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-detail-val {
+    font-size: 0.9rem;
+    color: rgba(240,237,232,0.6);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .form-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-input, .form-textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 0.8rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-textarea { min-height: 130px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2.5rem;
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garant', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    color: var(--muted);
+    font-size: 0.7rem;
+    opacity: 0.5;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.8rem 1.8rem;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 999;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── PLACEHOLDER IMAGES ── */
+  .placeholder-img {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: var(--muted);
+  }
+
+  .placeholder-img .ph-icon { font-size: 2.5rem; opacity: 0.3; }
+  .placeholder-img .ph-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    opacity: 0.4;
+    color: var(--gold);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    section { padding: 4rem 1.2rem; }
+
+    .hero-content { padding: 0 1.2rem; }
+    .hero-stats { bottom: 2rem; right: 1.2rem; gap: 1.5rem; }
+
+    .featured-grid { grid-template-columns: 1fr 1fr; }
+    .featured-card:first-child { grid-row: span 1; grid-column: span 2; }
+
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-accent { display: none; }
+
+    .shipping-grid { grid-template-columns: 1fr; }
+
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .modal { grid-template-columns: 1fr; }
+    .modal-img-wrap { display: none; }
+
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-links { flex-wrap: wrap; }
+
+    .form-row { grid-template-columns: 1fr; }
+    .about-values { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 540px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .hero-stats { display: none; }
+    .featured-grid { grid-template-columns: 1fr; }
+    .featured-card:first-child { grid-column: span 1; }
+    .products-header { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">ASCEND</a>
+  <ul class="nav-links">
+    <li><a href="#featured">Collection</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#shipping">Shipping</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#products" class="nav-cta">Shop Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#featured" onclick="toggleMenu()">Collection</a>
+  <a href="#products" onclick="toggleMenu()">Shop</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#shipping" onclick="toggleMenu()">Shipping</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-slash"></div>
+  <div class="hero-slash-2"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow fade-up">Premium Streetwear · Philippines</p>
+    <h1 class="hero-title fade-up delay-1">ASCEND<br><span>DIFFERENT</span></h1>
+    <p class="hero-sub fade-up delay-2">Not everyone is built for the top.<br>We dress those who are.</p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#products" class="btn-primary">Shop the Drop</a>
+      <a href="#about" class="btn-ghost">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-stats fade-up delay-4">
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Signature Pieces</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Premium Cotton</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FEATURED COLLECTION -->
+<section id="featured">
+  <div class="featured-inner">
+    <div style="margin-bottom: 2.5rem;">
+      <p class="section-eyebrow">Drop 001</p>
+      <h2 class="section-title">FEATURED COLLECTION</h2>
+    </div>
+    <div class="featured-grid">
+      <div class="featured-card" onclick="openModal(0)">
+        <div class="placeholder-img featured-img" style="height: 100%; min-height: 500px;">
+          <span class="ph-icon">🖼</span>
+          <span class="ph-text">ASCEND</span>
+        </div>
+        <div class="featured-overlay">
+          <span class="featured-tag">Bestseller</span>
+          <div class="featured-name">BUILT DIFFERENT SHIRT</div>
+          <div class="featured-price">₱899</div>
+        </div>
+      </div>
+      <div class="featured-card" onclick="openModal(1)">
+        <div class="placeholder-img featured-img">
+          <span class="ph-icon">🖼</span>
+          <span class="ph-text">ASCEND</span>
+        </div>
+        <div class="featured-overlay">
+          <span class="featured-tag">New</span>
+          <div class="featured-name">CLASSIC LOGO SHIRT</div>
+          <div class="featured-price">₱799</div>
+        </div>
+      </div>
+      <div class="featured-card" onclick="openModal(2)">
+        <div class="placeholder-img featured-img">
+          <span class="ph-icon">🖼</span>
+          <span class="ph-text">ASCEND</span>
+        </div>
+        <div class="featured-overlay">
+          <span class="featured-tag">Premium</span>
+          <div class="featured-name">PREMIUM OVERSIZED</div>
+          <div class="featured-price">₱999</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCT GRID -->
+<section id="products">
+  <div class="products-inner">
+    <div class="products-header">
+      <div class="products-header-left">
+        <p class="section-eyebrow">All Products</p>
+        <h2 class="section-title">SHOP THE DROP</h2>
+        <p class="section-desc" style="margin-bottom: 0;">Every piece crafted for those who move with purpose.</p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="setFilter(this, 'all')">All</button>
+        <button class="filter-btn" onclick="setFilter(this, 'shirt')">Shirts</button>
+        <button class="filter-btn" onclick="setFilter(this, 'oversized')">Oversized</button>
+      </div>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-glow"></div>
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-gold-line"></div>
+      <div class="placeholder-img about-img-main" style="aspect-ratio: 3/4; border-radius: 2px;">
+        <span class="ph-icon">🖼</span>
+        <span class="ph-text">BRAND PHOTO</span>
+      </div>
+      <div class="placeholder-img about-img-accent" style="width: 55%; aspect-ratio: 1; position: absolute; bottom: -1.5rem; right: -1.5rem; border: 3px solid var(--black); border-radius: 2px;">
+        <span class="ph-icon" style="font-size: 1.2rem;">🖼</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-eyebrow">Our Story</p>
+      <h2 class="section-title">BUILT FROM THE GROUND UP</h2>
+      <p class="about-body">
+        ASCEND was born from a simple belief: the way you dress is a declaration. Not of where you've been — but of where you're going.
+      </p>
+      <p class="about-body">
+        We design for the ones who outwork the room. The dreamers who clock in before sunrise. Premium fabrics, timeless silhouettes, and a brand identity that carries weight — because you do.
+      </p>
+      <div class="about-values">
+        <div class="value-item">
+          <div class="value-title">Premium Quality</div>
+          <div class="value-desc">100% combed ring-spun cotton. Built to last, not to trend.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-title">Local Pride</div>
+          <div class="value-desc">Proudly designed and fulfilled in the Philippines.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-title">Intentional Design</div>
+          <div class="value-desc">Every detail deliberate. No noise. No filler.</div>
+        </div>
+        <div class="value-item">
+          <div class="value-title">For the Ascenders</div>
+          <div class="value-desc">Made for those climbing — not those already comfortable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SHIPPING & RETURNS -->
+<section id="shipping">
+  <div class="shipping-inner">
+    <p class="section-eyebrow">Policies</p>
+    <h2 class="section-title">SHIPPING & RETURNS</h2>
+    <p class="section-desc">We handle your order with the same care you put into your grind.</p>
+
+    <div class="shipping-grid">
+      <div class="shipping-card">
+        <span class="shipping-icon">🚚</span>
+        <div class="shipping-title">Shipping</div>
+        <div class="shipping-desc">We ship nationwide across the Philippines via trusted couriers. Orders are processed within 1–2 business days.</div>
+        <div class="shipping-detail">
+          <div class="shipping-item"><span>Metro Manila</span><strong>2–4 days</strong></div>
+          <div class="shipping-item"><span>Luzon</span><strong>3–5 days</strong></div>
+          <div class="shipping-item"><span>Visayas / Mindanao</span><strong>5–7 days</strong></div>
+          <div class="shipping-item"><span>Free Shipping</span><strong>Orders ₱2,000+</strong></div>
+        </div>
+      </div>
+      <div class="shipping-card">
+        <span class="shipping-icon">🔄</span>
+        <div class="shipping-title">Returns</div>
+        <div class="shipping-desc">Not the right fit? We've got you. Returns are accepted within 7 days of delivery for unworn, unaltered items in original packaging.</div>
+        <div class="shipping-detail">
+          <div class="shipping-item"><span>Return Window</span><strong>7 days</strong></div>
+          <div class="shipping-item"><span>Condition</span><strong>Unworn, tags on</strong></div>
+          <div class="shipping-item"><span>Exchanges</span><strong>Free once</strong></div>
+          <div class="shipping-item"><span>Refund Method</span><strong>GCash / Bank</strong></div>
+        </div>
+      </div>
+      <div class="shipping-card">
+        <span class="shipping-icon">📦</span>
+        <div class="shipping-title">Packaging</div>
+        <div class="shipping-desc">Every ASCEND order arrives in branded packaging designed to feel like a drop — not just a delivery.</div>
+        <div class="shipping-detail">
+          <div class="shipping-item"><span>Order Tracking</span><strong>SMS + Email</strong></div>
+          <div class="shipping-item"><span>Gift Wrapping</span><strong>Available</strong></div>
+          <div class="shipping-item"><span>Courier</span><strong>J&T / LBC / Flash</strong></div>
+          <div class="shipping-item"><span>COD</span><strong>Available</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <p class="section-eyebrow">Get in Touch</p>
+      <h2 class="section-title">REACH OUT</h2>
+      <p class="section-desc" style="margin-bottom: 2.5rem;">Have a question, bulk order inquiry, or collab idea? We respond within 24 hours.</p>
+
+      <div class="contact-detail">
+        <span class="contact-icon">📧</span>
+        <div>
+          <div class="contact-detail-title">Email</div>
+          <div class="contact-detail-val">hello@ascendph.com</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-icon">💬</span>
+        <div>
+          <div class="contact-detail-title">Facebook / Instagram</div>
+          <div class="contact-detail-val">@ascendph</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-icon">📍</span>
+        <div>
+          <div class="contact-detail-title">Based In</div>
+          <div class="contact-detail-val">Philippines 🇵🇭</div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input class="form-input" type="text" placeholder="Juan" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input class="form-input" type="text" placeholder="dela Cruz" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="you@email.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input class="form-input" type="text" placeholder="Order inquiry, collab, etc.">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell us what's on your mind…" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width: 100%; padding: 1rem; font-size: 0.8rem;">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">ASCEND</div>
+      <div class="footer-tagline">Not everyone is built for the top.</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#featured">Collection</a></li>
+      <li><a href="#products">Shop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#shipping">Shipping</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">© 2025 ASCEND. All rights reserved. Proudly Philippine-made.</div>
+</footer>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal">
+    <div class="modal-img-wrap">
+      <div class="placeholder-img modal-img">
+        <span class="ph-icon">🖼</span>
+        <span class="ph-text" id="modalImgText">ASCEND</span>
+      </div>
+    </div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-tag" id="modalTag">Premium Streetwear</div>
+      <div class="modal-name" id="modalName">ASCEND SHIRT</div>
+      <div class="modal-price" id="modalPrice">₱899</div>
+      <div class="modal-desc" id="modalDesc">Premium quality streetwear crafted for those who ascend.</div>
+      <div>
+        <div class="modal-label">Select Size</div>
+        <div class="modal-sizes" id="modalSizes"></div>
+      </div>
+      <div>
+        <div class="modal-label">Select Color</div>
+        <div class="modal-colors" id="modalColors"></div>
+      </div>
+      <button class="modal-add-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Added to cart!</div>
+
+<script>
+  const products = [
+    {
+      name: "BUILT DIFFERENT SHIRT",
+      price: "₱899",
+      badge: "Bestseller",
+      tag: "Drop 001",
+      desc: "The statement piece. A heavyweight 220gsm combed cotton tee with our signature 'Built Different' graphic — screen-printed with gold accents. For those who don't do average.",
+      sizes: ["XS", "S", "M", "L", "XL", "XXL"],
+      colors: ["#1a1a1a", "#FFFFFF", "#2C3E50"],
+      colorNames: ["Jet Black", "White", "Navy"],
+      category: "shirt"
+    },
+    {
+      name: "CLASSIC LOGO SHIRT",
+      price: "₱799",
+      badge: "New",
+      tag: "Staple",
+      desc: "The everyday essential. Clean, minimal, and unmistakably ASCEND. Embroidered chest logo on 190gsm cotton. The piece you reach for without thinking.",
+      sizes: ["XS", "S", "M", "L", "XL"],
+      colors: ["#0A0A0A", "#C9A84C", "#4a4a4a"],
+      colorNames: ["Black", "Gold Edition", "Ash Grey"],
+      category: "shirt"
+    },
+    {
+      name: "PREMIUM OVERSIZED SHIRT",
+      price: "₱999",
+      badge: "Premium",
+      tag: "Drop 001",
+      desc: "Engineered for the oversized silhouette. 250gsm structured cotton drops a full size larger for that intentional boxy fit. Dropped shoulders, elongated hem, woven label.",
+      sizes: ["S", "M", "L", "XL", "XXL"],
+      colors: ["#0A0A0A", "#F0EDE8", "#333333"],
+      colorNames: ["Blackout", "Cream", "Charcoal"],
+      category: "oversized"
+    }
+  ];
+
+  function buildProductCards() {
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = '';
+    products.forEach((p, i) => {
+      const colors = p.colors.map((c, ci) =>
+        `<div class="color-dot ${ci===0?'active':''}" style="background:${c}; ${c==='#FFFFFF'||c==='#F0EDE8'?'border-color:#555;':''}" data-name="${p.colorNames[ci]}" title="${p.colorNames[ci]}"></div>`
+      ).join('');
+      const sizes = p.sizes.map((s, si) =>
+        `<div class="size-chip ${si===0?'active':''}" onclick="selectSize(this)">${s}</div>`
+      ).join('');
+
+      grid.innerHTML += `
+        <div class="product-card" data-category="${p.category}">
+          <div class="product-img-wrap">
+            <div class="placeholder-img product-img">
+              <span class="ph-icon">🖼</span>
+              <span class="ph-text">ASCEND</span>
+            </div>
+            ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+            <div class="product-quick-add" onclick="openModal(${i})">Quick View</div>
+          </div>
+          <div class="product-info">
+            <div class="product-name">${p.name}</div>
+            <div class="product-price">${p.price}</div>
+            <div class="product-sizes">${sizes}</div>
+            <div class="product-colors">
+              ${colors}
+              <span class="color-label">${p.colorNames[0]}</span>
+            </div>
+          </div>
+        </div>`;
+    });
+
+    // color dot click handlers
+    grid.querySelectorAll('.product-colors').forEach(group => {
+      group.querySelectorAll('.color-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+          group.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+          dot.classList.add('active');
+          group.querySelector('.color-label').textContent = dot.dataset.name;
+        });
+      });
+    });
+  }
+
+  function selectSize(el) {
+    const parent = el.parentElement;
+    parent.querySelectorAll('.size-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function setFilter(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.category === cat) ? '' : 'none';
+    });
+  }
+
+  let currentProduct = 0;
+
+  function openModal(i) {
+    currentProduct = i;
+    const p = products[i];
+    document.getElementById('modalTag').textContent = p.tag;
+    document.getElementById('modalName').textContent = p.name;
+    document.getElementById('modalPrice').textContent = p.price;
+    document.getElementById('modalDesc').textContent = p.desc;
+    document.getElementById('modalImgText').textContent = 'ASCEND';
+
+    const sizesEl = document.getElementById('modalSizes');
+    sizesEl.innerHTML = p.sizes.map((s, si) =>
+      `<button class="modal-size-btn ${si===0?'active':''}" onclick="selectModalSize(this)">${s}</button>`
+    ).join('');
+
+    const colorsEl = document.getElementById('modalColors');
+    colorsEl.innerHTML = p.colors.map((c, ci) =>
+      `<div class="modal-color-dot ${ci===0?'active':''}" style="background:${c}; ${c==='#FFFFFF'||c==='#F0EDE8'?'border-color:#666;':''}" title="${p.colorNames[ci]}"></div>`
+    ).join('');
+
+    colorsEl.querySelectorAll('.modal-color-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        colorsEl.querySelectorAll('.modal-color-dot').forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function selectModalSize(btn) {
+    btn.closest('.modal-sizes').querySelectorAll('.modal-size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  function addToCart() {
+    closeModal();
+    showToast('Added to cart ✓');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    showToast('Message sent! We'll reply within 24 hours.');
+    e.target.reset();
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  buildProductCards();
+</script>
+</body>
+</html>
